@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    font-family: "Cafe24Ssurround", sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background-color: #f9f9f9;
+  }
+  
+  /* 헤더 */
+  .header {
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    align-items: center;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  
+  .menu-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .home-button {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+  .header-icons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .header-icons span {
+    margin-left: 2px; /* 아이콘 간 간격 */
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul li {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .icon {
+    margin: 0;
+    font-size: 1.2rem;
+    font-style: normal;
+    width: 24px;
+    text-align: center;
+  }
+
+  .note-title-detail {
+    margin-left: 100px;
+    margin-right: 10px;
+    flex: 1;                 /* 제목 영역을 왼쪽에 꽉 채움 */
+    text-align: left;        /* 왼쪽 정렬 */
+    font-size: 1.4rem;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+.note-title-input-detail {
+    margin-left: 100px;
+    margin-right: 10px;
+    flex: 1;                 /* 제목 영역을 왼쪽에 꽉 채움 */
+    text-align: left;        /* 왼쪽 정렬 */
+    font-size: 1.4rem;
+  box-sizing: border-box;
+}
+
+  @font-face {
+    font-family: "Cafe24Ssurround";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }

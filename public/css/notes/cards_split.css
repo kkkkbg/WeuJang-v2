@@ -1,0 +1,501 @@
+body {
+  overflow: hidden;
+}
+
+/* main에서 스크롤 처리 */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 화면 전체 높이 */
+  /* min-height: 100vh; */
+  max-height: 100vh;
+  /* 모바일에서 너무 꽉 차는 것 방지 */
+  padding: 3rem 2.3rem 1rem 2.3rem;
+  /* index-sticker-list가 절대 위치 잡을 기준 */
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* 전체 컨테이너 */
+.note-container {
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1); 
+  border: var(--border-10);
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 350px;
+  max-width: 1200px;
+  /* height: auto; */
+  height: calc(85dvh - 4rem);
+  /* 동적 뷰포트 사용 */
+  max-height: calc(85dvh - 4rem);
+  /* 너무 길어지면 스크롤 허용 */
+  overflow: auto;
+  background-color: var(--normal-yellow);
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  /* 임의로 높이 고정 */
+  /* height: 700px; */
+  /* 상단바 높이만큼 마진 적용 */
+  /* margin-bottom: 71px; */
+}
+
+/* 노트 영역 */
+.note {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  max-width: 1200px;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.note-row {
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  cursor: default;
+  position: relative;
+}
+
+.note-row .left {
+  flex: 1;
+  text-indent: -1em;
+  /* 첫 줄은 숫자 포함되게 앞으로 당김 */
+}
+
+/* 좌우 영역 */
+.left,
+.right {
+  flex: 1;
+  padding: 10px;
+}
+
+/* 좌측 영역에만 구분선 추가 */
+.left {
+  font-size: 1rem;
+  border-right: 2px solid #ccc;
+}
+
+/* 목록 스타일 */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+.right {
+  font-size: 1rem;
+  color: #ff4e00d4;
+  padding-top: 35px;
+}
+
+
+/* 메타 정보 (별, 힌트)를 좌우 배치 */
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  /* left의 너비에 맞추기 */
+  box-sizing: border-box;
+  padding: 0 0.5rem 0 0;
+  ;
+}
+
+.spanHeart {
+  display: flex;
+  gap: 2px;
+  /* 이미지 사이 간격 */
+  align-items: center;
+  cursor: pointer;
+}
+
+.img-heart {
+  width: 25px;
+  height: 25px;
+}
+
+/* 반응형 처리 */
+/* @media (max-width: 768px) {
+  .note-container {
+    padding: 10px;
+  }
+
+  .note {
+    width: 100%;
+  }
+} */
+
+@media (max-width: 480px) {
+  .note {
+    width: 100%;
+    padding: 5px;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  li {
+    font-size: 0.9rem;
+  }
+
+  .left {
+    font-size: 1rem;
+  }
+
+  .right {
+    font-size: 0.9rem;
+  }
+}
+
+/* 힌트 팝업------------------ */
+.hint-popup {
+  position: absolute;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  max-width: 90vw;
+  /* 모바일 대응 */
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
+  font-size: 1rem;
+  display: none;
+}
+
+.hint-btn {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .hint-popup {
+    font-size: 0.95rem;
+    padding: 8px;
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hint-popup {
+    font-size: 0.9rem;
+    padding: 6px;
+    border-radius: 5px;
+    max-width: 30vw;
+  }
+}
+
+/* 노트제목 ------------------ */
+.note-summary {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 북마크 표시------------------ */
+
+
+.index-stickers {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sticker {
+  background-color: #fffdc1;
+  border: 2px solid #f0c040;
+  padding: 3px 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sticker:hover {
+  background-color: #f9e682;
+}
+
+.index-sticker {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+#index-sticker-list {
+  position: relative;
+  width: 50px;
+  height: calc(85dvh - 4rem);
+  /* 동적 뷰포트 사용 */
+  max-height: calc(85dvh - 4rem);
+  min-width: 50px;
+}
+
+.index-sticker {
+  font-size: 14px;
+  width: 55px;
+  position: absolute;
+  background-color: #FFFDBF;
+  color: #333333de;
+  border: 2px solid #f0c040;
+  padding: 4px 7px 4px 8px;
+  transform: rotate(-3deg);
+  z-index: 0;
+}
+
+.index-sticker.active {
+  z-index: 1;
+}
+
+.highlight {
+  background-color: #FFFDBF;
+  /* 연한 노란색 */
+  transition: background-color 0.5s ease;
+  animation: highlight-fade 2s forwards;
+}
+
+.yellow-border {
+  position: relative;
+}
+
+.yellow-border::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  background-color: #FFFDBF;
+}
+
+@keyframes highlight-fade {
+  0% {
+    background-color: #FFFDBF;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* 문제 설정------------------ */
+.dots-menu {
+  position: absolute;
+  bottom: -119px;
+  right: 26px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: none;
+  flex-direction: column;
+  padding: 10px 0;
+  min-width: 110px;
+  z-index: 1;
+}
+
+.dots-menu p {
+  margin: 0px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  white-space: nowrap;
+}
+
+.dots-menu p:hover {
+  background-color: #f0f0f0;
+}
+
+.settings-icon {
+  position: absolute;
+  top: 13px;
+  right: 10px;
+}
+
+.settings-icon img {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.spanTextLefts {
+  white-space: pre-line;
+}
+
+.spanTextRigths {
+  white-space: pre-line;
+}
+
+
+/* 문제 편집------------------ */
+.edit-textarea {
+  font-size: 1rem;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 135px;
+}
+
+.edit-textarea2 {
+  font-size: 1rem;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.left span .edit-textarea2 {
+  min-height: 85px;
+}
+
+.left span .textHint {
+  min-height: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.edit-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-wrapper span {
+  margin-left: 1.2rem;
+}
+
+.right .edit-textarea {
+  margin-top: 1.9rem;
+}
+
+.edit-hint-input {
+  font-size: 0.95rem;
+  padding: 0.4rem 0.6rem;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  width: 60%;
+}
+
+.edit-save-btn {
+  margin-top: 0.8rem;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-save-btn:hover {
+  background-color: var(--shadow-50);
+}
+
+.edit-save-btn,
+.edit-cancel-btn {
+  margin: 0 4px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-save-btn {
+  background-color: var(--normal-green);
+  color: white;
+}
+
+.edit-cancel-btn {
+  background-color: var(--normal-red);
+  color: white;
+}
+
+.answer-actions {
+  float: right;
+}
+
+.no-data {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #999;
+  margin: 5rem auto;
+  text-decoration: none;
+  /* 밑줄 제거 */
+}
+
+.no-data:hover {
+  color: #000000;
+}
+
+/* .note-list {
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 15px;
+  cursor: default;
+  position: relative;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  height: 30rem;
+  width: 100%;
+} */
+
+.note-list {
+  padding: 1rem 0;
+  /* 내부 영역이 넘치면 스크롤 */
+  flex: 1 1 auto;
+}
+
+/* 반응형 폰트 및 패딩 조정 */
+@media (max-width: 480px) {
+  .note-container .note-list {
+    /* padding: 16px; */
+    font-size: 14px;
+  }
+}
+
+/* 정렬 */
+.sort-container{
+  position: absolute;
+  top: 10px;
+  right: 45px;
+}
+
+.sort-container select{
+  padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fdfcf7;
+}

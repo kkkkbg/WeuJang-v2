@@ -1,0 +1,86 @@
+/* 컨텐츠 푸시 */
+.container {
+  margin-left: 60px;
+  transition: margin-left 0.3s ease;
+}
+
+.side-menu.open~.container {
+  margin-left: 200px;
+}
+
+/* 사이드 메뉴 */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  /* 접힌 상태 */
+  height: 100%;
+  background: var(--normal-yellow);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: width 0.3s ease;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu.open {
+  width: 200px;
+  /* 펼친 상태 */
+}
+
+/* 토글 버튼 */
+.menu-toggle {
+  padding: 0 6px;
+  margin-right: 50px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+/* 메뉴 항목 */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  white-space: nowrap;
+}
+
+.side-menu .icon {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.side-menu .label {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.side-menu.open .label {
+  opacity: 1;
+}
+
+/* href 기본 효과 remove */
+.link {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    color: blue;
+  }
+}
+
+/* 홈 버튼 */
+.goMain {
+  display: block;
+}
+
+.side-menu.open .goMain {
+  display: none;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/register.css" />
+</head>
+<body>
+  <div class="register-box">
+    <h2>회원가입</h2>
+    <form id="registerForm">
+      <div class="input-box">
+        <label for="user_id">회원 ID</label>
+        <input type="text" class="inputBox" id="user_id" name="user_id" minlength="5" maxlength="20" placeholder="5~20글자의 영문 소문자, 숫자, _ , - 만 허용" required/>
+        <div id="idCheckMsg"></div>
+      </div>
+
+      <div class="input-box">
+        <label for="password">비밀번호</label>
+        <input type="password" class="inputBox" id="password" name="password" minlength="8" maxlength="20" placeholder="8~20자의 영문 대/소문자, 숫자, 특수문자 사용 필수" required/>
+      </div>
+      
+      <div class="input-box">
+        <label for="pwCheck">비밀번호 확인</label>
+        <input type="password" class="inputBox" id="pwCheck" name="pwCheck" minlength="8" maxlength="20" placeholder="8~20자의 영문 대/소문자, 숫자, 특수문자 사용 필수" required/>
+        <div id="pwCheckMsg"></div>
+      </div>
+
+      <div class="input-box">
+        <label for="name">사용자 이름</label>
+        <input type="text" class="inputBox" id="name" name="name" required/>
+      </div>
+
+      <div class="input-box">
+        <label for="email">이메일 주소</label>
+        <input type="email" class="inputBox" id="email" name="email" required />
+      </div>
+
+      <div class="input-box">
+        <label for="birth">생년월일 (YYYYMMDD)</label>
+        <input type="text" class="inputBox" id="birth" name="birth" placeholder="YYYYMMDD" required />
+      </div>
+      
+      <button class="btn" type="submit">가입하기</button>
+    </form>
+    
+    <div id="home" onclick="location.href='/'">홈화면</div>
+
+  </div>
+</body>
+
+<script src="/js/register.js"></script>
+
+</html>

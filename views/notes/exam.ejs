@@ -1,0 +1,32 @@
+
+<div class="note-container" id="divCardContainer">
+
+  <div class="card-progress">
+    <span id="progressText">1 / 10</span>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+  </div>
+  </div>
+
+  <div class="card" id="flashcard">
+    <div class="card-front">
+      <p id="question">
+        문제 내용
+      </p>
+    </div>
+    <div class="card-back">
+      <p id="answer">답 내용</p>
+    </div>
+  </div>
+
+<div class="navigation">
+    <button class="wrong-btn">다시암기</button>
+    <button class="correct-btn">암기완료</button>
+</div>
+
+<input type="hidden" id="hidNotes" value="<%= notes %>">
+<input type="hidden" id="hidCardNum" value="<%= cardNum %>">
+
+</div>
+
+    

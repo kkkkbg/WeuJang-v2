@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비밀번호 찾기</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/find.css" />
+</head>
+<body>
+  <div class="find-box">
+    <h2>비밀번호 재설정</h2>
+    <form id="updateForm">
+
+      <div class="input-box">
+        <label for="password">비밀번호</label>
+        <input type="password" class="inputBox" id="password" name="password" minlength="8" maxlength="20" placeholder="8~20자의 영문 대/소문자, 숫자, 특수문자 사용 필수" required/>
+      </div>
+      
+      <div class="input-box">
+        <label for="pwCheck">비밀번호 확인</label>
+        <input type="password" class="inputBox" id="pwCheck" name="pwCheck" minlength="8" maxlength="20" placeholder="8~20자의 영문 대/소문자, 숫자, 특수문자 사용 필수" required/>
+        <div id="pwCheckMsg"></div>
+      </div>
+
+      <button class="btn" type="submit">확인</button>
+    </form>
+    <div id="home" onclick="location.href='/'">홈화면</div>
+  </div>
+</body>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const userId = params.get("user_id");
+
+// 비밀번호 유효성 검사
+const passwordInput = document.getElementById('password');
+const pwCheckInput = document.getElementById('pwCheck');
+const pwChkMsg = document.getElementById('pwCheckMsg');
+
+// 8~20자의 영문 대/소문자, 숫자, 특수문자를 모두 사용해야함
+const pwValidPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[{\]};:'",<.>/?\\|`~]).{8,20}$/;
+
+function checkPasswordMatch() {
+  const userPw = passwordInput.value.trim();
+
+  pwChkMsg.textContent = "";
+  if (userPw === "") return false;
+
+  if (!userPw || userPw.length < 8 || !pwValidPattern.test(userPw)) {
+    pwChkMsg.textContent = '* 8~20자의 영문 대/소문자, 숫자, 특수문자를 모두 사용해 주세요.';
+    pwChkMsg.className = "invalid";
+    return false;
+  }
+
+  if (passwordInput.value !== pwCheckInput.value) {
+    pwChkMsg.textContent = '* 비밀번호가 일치하지 않습니다.';
+    pwChkMsg.className = "invalid";
+    return false;
+  }
+  return true;
+}
+
+passwordInput.addEventListener('input', checkPasswordMatch);
+pwCheckInput.addEventListener('input', checkPasswordMatch);
+
+// 확인 버튼
+document.getElementById('updateForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  if (!checkPasswordMatch()) {
+    alert("비밀번호를 확인해주세요");
+    return;
+  }
+  const formData = new FormData(this);
+  console.log(Object.fromEntries(formData.entries()));
+  const jsonData = {};
+  formData.forEach((value, key) => {
+    jsonData[key] = value;
+  });
+  jsonData["userId"] = userId;
+  
+  // 비밀번호 변경
+  try {
+    const response = await fetch('/user/updatePassword', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(jsonData)
+    });
+
+    const result = await response.json();
+    if (!response.ok) {
+      alert(result); // 오류 메시지
+    } else {
+      let paramObj = { opt: "pw" };
+      if (result) {
+        console.log(result);
+        Object.assign(paramObj, {
+          result: "success",
+        });
+      } else {
+        Object.assign(paramObj, {
+          result: "fail",
+        });
+      }
+      var queryParams = new URLSearchParams(paramObj);
+      window.location.href = `/findResult?${queryParams.toString()}`;
+    }
+  } catch (error) {
+    console.error('예외 발생:', error);
+    alert('네트워크 오류가 발생했습니다.');
+  }
+});
+
+</script>
+
+</html>

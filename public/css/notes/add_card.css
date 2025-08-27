@@ -1,0 +1,44 @@
+form {
+    max-width: 400px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+#addNoteBtn {
+  margin-top: 0rem;
+  margin-bottom: 0.8rem;
+}
+
+/* 수첩 추가 등록 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px 25px;
+  width: 300px;
+  border-radius: 8px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  padding: 0 0.75rem;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+}
+/* ---------------- */

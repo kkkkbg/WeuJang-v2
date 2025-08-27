@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    /* text-align: center; */
+    padding: 50px;
+  background-image: url('/images/WeuJang-bg-login.png');
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.register-box {
+    padding: 2rem;
+    width: 100%;
+    min-width: 200px;
+    max-width: 600px;
+}
+
+.register-box input[type="text"],
+.register-box input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#idCheckMsg,
+#pwCheckMsg {
+    font-family: 'Pretendard-Regular';
+}

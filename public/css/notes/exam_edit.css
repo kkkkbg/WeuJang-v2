@@ -1,0 +1,92 @@
+form {
+    max-width: 400px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+#addNoteBtn {
+  margin-top: 0rem;
+  margin-bottom: 0.8rem;
+}
+
+/* 수첩 추가 등록 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: var(--normal-yellow);
+  margin: 10% auto;
+  padding: 30px 25px;
+  width: 300px;
+  border-radius: 8px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  padding: 0 0.75rem;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+}
+/* ---------------- */
+
+/* 체크박스 숨김 */
+.hidden-checkbox {
+  display: none;
+}
+
+/* 감싸는 라벨 */
+.note-checkbox {
+  display: inline-block;
+  margin: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* 네모 텍스트 박스 */
+.box-label {
+  display: inline-block;
+  padding: 6px 12px;
+  border: var(--border-17);
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+/* 선택된 상태: 체크박스가 체크됐을 때 span 스타일 */
+.hidden-checkbox:checked + .box-label {
+  background-color: #525252;
+  color: #fff;
+  border-color: #525252;
+}
+
+.box-label:hover {
+  background-color: var(--shadow-50);
+  color: #fff;
+  /* border-color: var(--shadow-15); */
+}
+
+.pMsg{
+    font-size: 12px;
+    color: #868686;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.note-list{
+  margin-top: 1.0rem;
+}

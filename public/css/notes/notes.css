@@ -1,0 +1,222 @@
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 2rem;
+}
+
+.folder-item {
+  text-align: center;
+
+  &:hover {
+    color: blue;
+  }
+}
+
+.folder-item .folder-link img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  /* background-color: white;
+  border: 1px solid #ddd; */
+  border-radius: 8px;
+  padding: 10px;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note-title {
+  font-size: 0.8rem;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.note-title-input {
+  width: 100%;
+  max-width: 180px;
+  padding: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.loading-indicator {
+  font-size: 14px;
+  color: #aaa;
+  padding: 4px;
+}
+
+/* 상단 검색 기능 */
+.folder-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.control-left {
+  flex: 1;
+  min-width: 180px;
+}
+
+.search-input {
+  background: #fdfcf7;
+  width: 50%;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.control-right {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.sort-select {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fdfcf7;
+}
+
+.settings-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.settings-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.icon-set{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.icon-set:hover {
+  border-radius: 20px;
+  background-color: var(--shadow-15);
+  padding: 2px;
+}
+
+/* 편집 모드 */
+.folder-checkbox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  transform: scale(1.2);
+}
+
+.folder-item {
+  position: relative;
+}
+
+.folder-checkbox.hidden {
+  display: none;
+}
+
+.folder-link.editing img {
+  pointer-events: none; /* 클릭 막기 */
+  opacity: 0.5;
+  filter: grayscale(80%);
+  pointer-events: none; /* 링크 클릭 막기 */
+}
+
+/* 삭제 버튼: 폴더 우측 상단에 뜨게 */
+.folder-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.delete-icon {
+  position: absolute;
+  top: -9px;
+    right: -10px;
+    width: 32px;
+    height: 32px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s;
+}
+
+.delete-icon:hover {
+  transform: scale(1.2);
+}
+
+.hidden {
+  display: none;
+}
+
+.no-data {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #999;
+  margin: 5rem auto;
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+.no-data:hover {
+  color: #000000;
+}
+
+.div-no-data{
+  text-align: center; 
+  margin-top: 5rem;
+}
+
+.folder-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.folder-hover-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.folder-image {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
+
+/* 회색 오버레이 */
+.hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(120, 120, 120, 0.4); /* 반투명 회색 */
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 6px;
+}
+
+/* 숫자 표시 */
+.card-count {
+  position: absolute;
+  bottom: 6px;
+  right: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  background-color: rgb(0 0 0 / 80%);
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* 마우스 호버 시 */
+.folder-hover-wrapper:hover .hover-overlay {
+  opacity: 1;
+}

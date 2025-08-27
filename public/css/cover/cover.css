@@ -1,0 +1,28 @@
+  #cover {
+    position: absolute;
+    /* 또는 fixed, 구조에 따라 조정 */
+    top: 0;
+    left: 0;
+    width: 55%;
+    height: 90%;
+    opacity: 0.87;
+    background-color: #ff0000;
+    cursor: grab;
+    transition: opacity 0.2s;
+    /* 처음에는 숨겨놓기 */
+    display: none;
+    /* 화면 최상단에 위치 */
+    z-index: 999;
+  }
+
+  #cover.dragging {
+    cursor: grabbing;
+  }
+
+  #cover.show {
+    display: block;
+  }
+
+  #saveBtn {
+    max-width: 600px;
+  }

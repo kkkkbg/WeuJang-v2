@@ -1,0 +1,89 @@
+.notice-main {
+  padding: 40px 20px;
+  max-width: 80%;
+  margin: 0 auto;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.notice-header {
+  border-bottom: 2px solid #333;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+}
+
+.notice-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.notice-list-section {
+  padding: 10px 0;
+}
+
+.notice-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notice-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notice-item {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.notice-item:hover {
+  background-color: var(--shadow-15);
+}
+
+.notice-subject {
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+}
+
+.notice-item a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.notice-link {
+  width: 100%;
+  text-decoration: none;
+  color: #222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notice-date {
+  font-size: 14px;
+  color: #888;
+}
+
+.no-notice {
+  text-align: center;
+  color: #999;
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+.notice-badge {
+  display: inline-block;
+  background-color: #ff5252;  /* 눈에 잘 띄는 색 (빨간 계열 추천) */
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 999px;  /* 완전한 라운드형 */
+  margin-right: 6px;
+  vertical-align: middle;
+}

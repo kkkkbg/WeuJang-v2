@@ -1,0 +1,64 @@
+h2 {
+    text-align: center;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+}
+
+.radio-image + label {
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.radio-image + label img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+input[name="template"] {
+    opacity: 0;
+    position: absolute;
+    left: -9999px;
+}
+
+.radio-image + label {
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.radio-image + label img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  opacity: 0.6; /* 기본은 반투명 */
+}
+
+/* 호버 시 */
+.radio-image + label:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+/* 선택 시 완전 선명 + 확대 */
+.radio-image:checked + label img {
+  opacity: 1;
+}
+
+/* 선택 시 */
+.radio-image:checked + label {
+  color: white;
+  box-shadow: 0 8px 16px #c6c6c6;
+}

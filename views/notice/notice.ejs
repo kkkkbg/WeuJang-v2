@@ -1,0 +1,25 @@
+<main class="notice-main">
+  <header class="notice-header">
+    <h1 class="notice-title">📢공지사항</h1>
+  </header>
+
+  <section class="notice-list-section">
+    <% if (notices && notices.length > 0) { %>
+      <ul class="notice-list">
+        <% notices.forEach(function(notice) { %>
+          <li class="notice-item" data-url="/notice/detail?id=<%= notice.notice_id %>">
+            <div class="notice-link">
+              <span class="notice-subject">
+                <% if (notice.FIXFG == 1) { %><span class="notice-badge">공지</span><% } %>
+                <%= notice.TITLE %>
+              </span>
+              <span class="notice-date"><%= notice.ENTDT ? notice.ENTDT.slice(0,4) + '.' + notice.ENTDT.slice(4,6) + '.' + notice.ENTDT.slice(6,8) : '' %>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p class="no-notice">등록된 공지사항이 없습니다.</p>
+    <% } %>
+  </section>
+</main>

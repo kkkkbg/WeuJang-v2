@@ -1,0 +1,31 @@
+<main class="learn-record-main">
+  <header class="learn-record-header">
+    <h1 class="learn-record-title">학습기록</h1>
+  </header>
+
+  <section class="calendar-and-detail">
+    <div class="calendar-panel">
+      <div class="calendar-header">
+        <button id="prev-month"><</button>
+        <span id="calendar-title">2025년 6월</span>
+        <button id="next-month">></button>
+      </div>
+      <!-- 요일 라벨 추가 -->
+      <div class="calendar-weekdays">
+        <div>일</div>
+        <div>월</div>
+        <div>화</div>
+        <div>수</div>
+        <div>목</div>
+        <div>금</div>
+        <div>토</div>
+      </div>
+      <div id="calendar"></div>
+    </div>
+    
+    <div class="record-detail-panel" id="record-detail" style="display: none;">
+      <h3 id="selected-date-title"></h3>
+      <div id="record-detail-content"></div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,34 @@
+<body>
+  <h2>가림판 선택</h2>
+  <div class="content-box">
+    <!-- 좌측: 설정 영역 -->
+    <div class="left-box">
+        <input type="hidden" id="defaultCoverId" value="<%= selectedCoverId %>">
+        <select class="inputBox" id="coverSelectbox" name="cover_id" onchange="chageCoverSelect()" required>
+            <option class="cover-box" value="-1" selected>기본설정</option>
+            <% covers.forEach(cover => { %>
+              <option class="cover-box" value="<%= cover.cover_id %>"><%= cover.title %></option>
+            <% }) %>
+        </select>
+        
+        <button class="btn" onclick="setDefaultCover()">기본값 설정</button>
+        <button class="btn" onclick="goCoverEdit()">새로 등록</button>
+        <div class="horizontal-alignmen">
+          <button class="btn" onclick="goCoverEdit('update')">수정</button>
+          <button class="btn" onclick="deleteCover()">삭제</button>
+        </div>
+    </div>
+
+    <!-- 우측: 임시 가림판 -->
+    <div id="previewWrapper">
+      <div id="previewText">
+          <a id="sample-question">실제 표시될 답 :</a>
+          <a id="sample-answer">answer</a>
+      </div>
+      <div id="coverPreview">
+          <img id="previewImage">
+          <div id="decorationText"></div>
+      </div>
+    </div>
+  </div>
+</body>

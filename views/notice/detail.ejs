@@ -1,0 +1,18 @@
+<main class="main notice-detail-page">
+  <div class="notice-box">
+    <% if (notice.FIXYN === 'Y') { %>
+      <span class="notice-badge">공지</span>
+    <% } %>
+    <h1 class="notice-title"><%= notice.TITLE %></h1>
+    <div class="notice-meta">
+      <span class="meta-item">📅 <%= notice.ENTDT ? notice.ENTDT.slice(0,4) + '.' + notice.ENTDT.slice(4,6) + '.' + notice.ENTDT.slice(6,8) : '' %></span>
+    </div>
+    <hr class="notice-divider">
+    <div class="notice-content">
+      <%- notice.CONTENT.replace(/\\n/g, '<br>') %>
+    </div>
+    <div class="notice-back">
+        <a href="/notice/notice" class="back-button">목록</a>
+    </div>
+  </div>
+</main>

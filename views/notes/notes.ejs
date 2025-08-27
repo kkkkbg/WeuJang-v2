@@ -1,0 +1,46 @@
+<!-- 폴더 컨트롤 영역 -->
+<div class="folder-controls">
+  <div class="control-left">
+  <!-- 검색창 -->
+  <input type="text" id="folder-search" class="search-input" placeholder="수첩 검색..." />
+  </div>
+
+  <div class="control-right">
+  <!-- 정렬 옵션 -->
+  <select id="sort-select" class="sort-select">
+    <option value="latest">최신순</option>
+    <option value="oldest">오래된순</option>
+    <option value="title">제목순</option>
+  </select>
+  <!-- 체크박스 버튼 -->
+  <img src="/images/eraser.png" class="icon-set" alt="설정">  
+    </div>
+</div>
+<div class="folder-grid">
+  <% if (notes && notes.length > 0) { %>
+    <% notes.forEach(note => { %>
+      <div class="folder-item" id="<%= note.note_id %>">
+        <div class="folder-image-wrapper">
+          <img src="/images/delete-red.png" class="delete-icon hidden" data-id="<%= note.note_id %>" data-title="<%= note.title %>" alt="삭제"> 
+
+          <div class="folder-hover-wrapper">
+            <a class="folder-link" href="/cards_<%= note.template %>?note_id=<%= note.note_id %>">
+              <img src="/images/note_<%=note.template%>.png" alt="폴더" class="folder-image">
+              <div class="hover-overlay"></div>
+              <div class="card-count"><%= note.card_count && note.card_count.length > 3 ? '+999' : note.card_count %></div>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 제목 텍스트 영역 -->
+        <span class="note-title" title="<%= note.title %>" data-id="<%= note.note_id %>" data-title="<%= note.title %>">
+          <%= note.title && note.title.length > 8 ? note.title.substring(0, 8) + '...' : note.title %>
+        </span>
+      </div>
+    <% }) %>
+  <% } else { %>
+  </div>
+  <div class="div-no-data">
+    <a class="no-data" href="/add_note">수첩이 없습니다.</a>
+  </div>
+  <% } %>

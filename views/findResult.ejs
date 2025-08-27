@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조회 결과</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/find.css" />
+</head>
+<body>
+  <div class="find-box">
+    <!-- <h2>아이디 찾기</h2> -->
+    <div id="resultMsg"></div>
+    <div id="resultBox" style="display: none;"></div>
+
+    <div class="content-center" id="success">
+        <button class="btn" type="button" onclick="location.href='/'">로그인</button>
+        <button id="findPw" class="btn" type="button" onclick="location.href='findPw'">비밀번호 찾기</button>
+    </div>
+    <div class="content-center" id="fail">
+        <button id="prev" class="btn" type="button">재시도</button>
+        <button id="register" class="btn" type="button" onclick="location.href='register'">회원가입</button>
+        <button class="btn" type="button" onclick="location.href='/'">홈화면</button>
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const opt = params.get("opt");
+  const result = params.get("result");
+  const userId = params.get("user_id");
+  const ENTDT = params.get("ENTDT");
+  const ENTTM = params.get("ENTTM");
+
+ const formatDateTime = (dateStr, timeStr) => {
+  if (!dateStr || !timeStr) return "";
+  const yy = dateStr.slice(2, 4);
+  const mm = dateStr.slice(4, 6);
+  const dd = dateStr.slice(6, 8);
+  const hh = timeStr.slice(0, 2);
+  const mi = timeStr.slice(2, 4);
+  const ss = timeStr.slice(4, 6);
+  return `${yy}.${mm}.${dd} ${hh}:${mi}:${ss}`;
+};
+
+const formattedDateTime = formatDateTime(ENTDT, ENTTM);
+
+const resultBox = document.getElementById("resultBox");
+const resultMsg = document.getElementById("resultMsg");
+const btnSuccess = document.getElementById("success");
+const btnFail = document.getElementById("fail");
+btnSuccess.style.display = "none";
+btnFail.style.display = "none";
+
+// 뒤로가기 버튼 url 설정
+const urlMap = {
+  id: 'findId',
+  pw: 'findPw'
+};
+document.getElementById('prev').addEventListener('click', function () {
+  const url = urlMap[opt] || 'main';
+  location.href = url;
+});
+
+// 아이디 찾기 성공
+if (opt == "id" && result == "success" && userId && formattedDateTime) {
+    btnSuccess.style.display = "block";
+    resultBox.style.display = "block";
+    resultBox.classList.add("custom-box");
+    resultMsg.innerHTML = `<h2>아이디 조회 결과</h2>`;
+    resultBox.innerHTML = `
+        <div class="info-group">
+          <div class="info-row"><span class="label">아이디:</span> <span>${userId}</span></div>
+          <div class="info-row createDate"><span class="label">가입일자:</span> <span>${formattedDateTime}</span></div>
+        </div>
+  `;
+} else if(opt == "pw" && result == "success"){ // 비밀번호 변경 성공
+    btnSuccess.style.display = "block";
+    resultMsg.innerHTML = `<h2>비밀번호 변경 성공</h2>`;
+    var btn = document.getElementById("findPw");
+    btn.style.display = 'none';
+} else if(opt == "pw" && result == "success"){ // 비밀번호 변경 실패
+    btnSuccess.style.display = "block";
+    resultMsg.innerHTML = `<h2>비밀번호 변경 성공</h2>`;
+    var btn = document.getElementById("findPw");
+    btn.style.display = 'none';
+} else if(opt == "pw" && result == "fail"){ // 비밀번호 변경 실패
+    btnFail.style.display = "block";
+    resultMsg.innerHTML = `<h2>비밀번호 변경 실패</h2>`;
+    var btn = document.getElementById("register");
+    btn.style.display = 'none';
+} else { //사용자 계정이 존재하지 않는 경우
+    btnFail.style.display = "block";
+    resultMsg.innerHTML = `<h2>조회된 정보가 없습니다.</h2>`;
+}
+</script>

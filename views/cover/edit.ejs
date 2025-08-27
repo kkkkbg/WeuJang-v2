@@ -1,0 +1,80 @@
+<body>
+<input type="hidden" id="pageMode" value="<%= page.mode %>">
+<input type="hidden" id="coverId" value="<%= page.coverId %>">
+<input type="hidden" id="preImage" value="<%= cover.Img %>">
+<h2><%= page.mode == 'update' ? '가림판 편집' : '가림판 등록' %></h2>
+<div id="edit">
+    <!-- 좌측: 설정 영역 -->
+    <div id="coverEditForm">            
+        <div class="setting-groups">
+            <label>가림판 이름</label>
+            <input class="inputBox" id="cover-title" type="text" value="<%= cover.title %>" placeholder="가림판 이름을 입력해주세요" required>
+        </div>
+        <div class="setting-groups">
+            <label>배경 이미지</label>
+            <div class="file-control">
+                <input class="inputBox" id="imageUpload" type="file" accept="image/*">
+                 <div id="deleteImageBtn" title="이미지 삭제" onclick="deleteImage(true)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m9.4 16.5l2.6-2.6l2.6 2.6l1.4-1.4l-2.6-2.6L16 9.9l-1.4-1.4l-2.6 2.6l-2.6-2.6L8 9.9l2.6 2.6L8 15.1zM7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21z"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="setting-groups">
+            <div class="setting-group">
+                <label for="coverBackgroundColor">배경색:</label>
+                <input id="coverBackgroundColor" type="color" value="<%= cover.color %>">
+            </div>
+            <div class="setting-group">
+                <label>투명도:</label>
+                <input id="coverOpacity" type="range" min="0" max="1" step="0.01" value="<%= cover.opacity %>" >
+            </div>
+        </div>
+
+        <div class="setting-groups">
+            <label>문구 입력:</label>
+            <textarea class="inputBox" id="textInput" name="question" placeholder="가림판 위에 띄우고 싶은 문구를 입력하세요" ><%= cover.text %></textarea>
+
+            <div class="setting-group">
+                <label>문구 크기:</label>
+                <input id="textSize" type="number" min="10" max="100" value="<%= cover.text_size %>">
+            </div>
+            <div class="setting-group">
+                <label>문구 색상:</label>
+                <input id="textColor" type="color" value="<%= cover.text_color %>">
+            </div>
+        </div>
+
+        <div class="setting-groups">
+            <div class="setting-group">
+                <label>문제 색상:</label>
+                <input id="questionColor" type="color" value="<%= cover.question_color %>">
+            </div>
+            <div class="setting-group">
+                <label>답 색상:</label>
+                <input id="answerColor" type="color" value="<%= cover.answer_color %>">
+            </div>
+            <div class="setting-group">
+                <label>답 투명도:</label>
+                <input id="answerOpacity" type="range" min="0" max="1" step="0.01" value="<%= cover.answer_opacity %>">
+            </div>
+        </div>
+    </div>
+
+    <!-- 우측: 임시 가림판 -->
+    <div id="previewWrapper">
+        <div id="previewText">
+            <a id="sample-question">실제 표시될 답 :</a>
+            <a id="sample-answer">answer</a>
+        </div>
+        <div id="coverPreview">
+            <img id="previewImage">
+            <div id="decorationText"></div>
+        </div>
+    </div>
+</div>
+
+</div>
+<button class="btn" id="saveBtn">설정 저장</button>
+
+</body>

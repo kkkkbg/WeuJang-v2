@@ -1,0 +1,524 @@
+body {
+  overflow: hidden;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 화면 전체 높이 */
+  /* min-height: 100vh; */
+  max-height: 100vh;
+  /* 모바일에서 너무 꽉 차는 것 방지 */
+  padding: 2.3rem 2.3rem 0 0;
+  /* index-sticker-list가 절대 위치 잡을 기준 */
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* 카드 전체 감싸는 컨테이너 */
+.note-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* 세로로 나열 */
+  width: 60%;
+  min-width: 350px;
+  max-width: 1200px;
+  height: calc(85dvh - 4rem);
+  /* 동적 뷰포트 사용 */
+  max-height: calc(85dvh - 4rem);
+  /* 너무 길어지면 스크롤 허용 */
+  padding-top: 1rem;
+
+  /* 임의로 높이 고정 */
+  /* height: 700px; */
+  /* 상단바 높이만큼 마진 적용 */
+  /* margin-bottom: 71px; */
+}
+
+.no-data {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #767676;
+  margin: 5rem auto;
+  text-decoration: none;
+  /* 밑줄 제거 */
+}
+
+.no-data:hover {
+  color: #000000;
+}
+
+/* 카드 위 메타 정보 */
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+
+.spanHeart {
+  display: flex;
+  gap: 2px;
+  /* 이미지 사이 간격 */
+  align-items: center;
+  cursor: pointer;
+}
+
+.img-heart {
+  width: 25px;
+  height: 25px;
+}
+
+#hint-btn {
+  cursor: pointer;
+}
+
+/* 카드 본체 */
+.card {
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1); 
+  border: var(--border-10);
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 2.2;
+  background-color: var(--normal-yellow);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  cursor: pointer;
+  /* ✅ overflow 제거 또는 overflow: visible로 변경 */
+  overflow: visible;
+}
+
+/* 앞/뒷면 공통 */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.card-front {
+  text-indent: -0.8rem;
+  text-align: center;
+}
+
+#question {
+  padding: 0 0.8rem;
+  width: 100%;
+}
+
+.card-back {
+  background-color: var(--dark-yellow);
+  transform: rotateY(180deg);
+}
+
+/* 회전 */
+.card.rotate {
+  transform: rotateY(180deg);
+}
+
+/* 네비게이션 버튼 */
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  gap: 2rem;
+}
+
+button {
+  padding: 8px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 50px;
+  /* border: 1px solid #ccc;
+  background-color: #eee; */
+  background: transparent;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--shadow-50);
+}
+
+.navigation button:hover {
+  background-color: var(--shadow-15);
+}
+
+/* 힌트 팝업 */
+.hint-popup {
+  position: absolute;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  max-width: 90vw;
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
+  font-size: 1rem;
+  display: none;
+}
+
+/* 반응형 768px 이하 */
+@media (max-width: 768px) {
+  .meta {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  #star, #hint-btn {
+    font-size: 1rem;
+  }
+
+  .card {
+    max-width: 90%;
+    font-size: 1.2rem;
+  }
+
+  .card-front, .card-back {
+    font-size: 1.0rem;
+    padding: 1rem;
+  }
+
+  .navigation button {
+    font-size: 0.95rem;
+    padding: 8px 16px;
+  }
+
+  .hint-popup {
+    font-size: 0.95rem;
+    padding: 8px;
+    border-radius: 6px;
+  }
+}
+
+/* 반응형 480px 이하 */
+@media (max-width: 480px) {
+  .meta {
+    font-size: 0.9rem;
+    padding: 0 0.4rem;
+  }
+
+  #star, #hint-btn {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    max-width: 95%;
+    aspect-ratio: 5 / 3;
+  }
+
+  .card-front, .card-back {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .navigation button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .hint-popup {
+    font-size: 0.9rem;
+    padding: 6px;
+    border-radius: 5px;
+  }
+}
+
+
+/* 문제 설정------------------ */
+.dots-menu {
+  position: absolute;
+  bottom: 345px;
+  right: 12px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: none;
+  flex-direction: column;
+  padding: 10px 0;
+  min-width: 110px;
+  z-index: 1;
+  font-size: 1rem;
+}
+
+.dots-menu p {
+  margin: 0px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  white-space: nowrap;
+}
+
+.dots-menu p:hover {
+  background-color: #f0f0f0;
+}
+
+.settings-icon {
+  top: 13px;
+  right: 10px;
+  float: right;
+}
+
+.settings-icon img {
+  margin-left: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.spanTextLefts {
+  white-space: pre-line;
+}
+
+.spanTextRigths {
+  white-space: pre-line;
+}
+
+
+/* 북마크 표시------------------ */
+
+
+.index-stickers {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sticker {
+  background-color: #fffdc1;
+  border: 2px solid #f0c040;
+  padding: 3px 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sticker:hover {
+  background-color: #f9e682;
+}
+
+.index-sticker {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+#flashcard-wrapper {
+  display: flex;
+  align-items: flex-start;
+  max-width: 760px;
+  /* 카드 + 스티커 너비 합산 */
+  margin: 0 auto;
+  gap: 10px;
+  /* 좌우 간격 */
+}
+
+#index-sticker-list {
+  position: relative;
+  /* 절대 위치 제거 */
+  width: 60px;
+  /* 너비 고정 */
+  height: auto;
+  /* 필요에 따라 조절 가능 */
+}
+
+.index-sticker {
+  font-size: 14px;
+  width: 55px;
+  position: absolute;
+  background-color: #FFFDBF;
+  color: #333333de;
+  border: 2px solid #f0c040;
+  padding: 4px 7px 4px 8px;
+  transform: rotate(-3deg);
+  z-index: 0;
+}
+
+.index-sticker.active {
+  z-index: 1;
+}
+
+.highlight {
+  background-color: #FFFDBF;
+  /* 연한 노란색 */
+  transition: background-color 0.5s ease;
+  animation: highlight-fade 2s forwards;
+}
+
+.yellow-border {
+  position: relative;
+}
+
+.yellow-border::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  background-color: #FFFDBF;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes highlight-fade {
+  0% {
+    background-color: #FFFDBF;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+
+/* 문제 편집------------------ */
+.edit-textarea {
+  font-size: 1rem;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.edit-textarea2 {
+  font-size: 1rem;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.left span .edit-textarea2 {
+  min-height: 85px;
+}
+
+.left span .textHint {
+  min-height: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.edit-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-wrapper span {
+  margin-left: 1.2rem;
+  font-size: 16px;
+  width: 5%;
+}
+
+.right .edit-textarea {
+  margin-top: 1.9rem;
+}
+
+.edit-hint-input {
+  font-size: 0.95rem;
+  padding: 0.4rem 0.6rem;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  width: 60%;
+}
+
+.edit-save-btn {
+  margin-top: 0.8rem;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-save-btn:hover {
+  background-color: var(--shadow-50);
+}
+
+.edit-save-btn,
+.edit-cancel-btn {
+  margin: 0 4px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-save-btn {
+  background-color: var(--normal-green);
+  color: white;
+}
+
+.edit-cancel-btn {
+  background-color: var(--normal-red);
+  color: white;
+}
+
+.answer-actions {
+  float: right;
+  margin-top: 5px;
+}
+
+.icon-set{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* 정렬 */
+.sort-container{
+  position: absolute;
+  right: 25px;
+}
+
+.sort-container select{
+  padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fdfcf7;
+}

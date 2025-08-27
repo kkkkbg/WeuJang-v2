@@ -1,0 +1,28 @@
+<body>
+    <h2>수첩 생성</h2>
+    <form id="addNoteForm">
+      <label for="title">제목</label>
+      <input class="inputBox" id="title" name="title" type="text" maxlength="15" placeholder="제목" required>
+
+      <label for="template">템플릿</label>
+      
+      <div>
+      <input type="radio" id="template-filp" name="template" value="filp" class="radio-image">
+      <label for="template-filp">
+        <img src="/images/note_filp.png" alt="플립">
+      </label>
+
+      <input type="radio" id="template-text" name="template" value="text" class="radio-image">
+      <label for="template-text">
+        <img src="/images/note_text.png" alt="텍스트 박스">
+      </label>
+
+      <input type="radio" id="template-split" name="template" value="split" class="radio-image">
+      <label for="template-split">
+        <img src="/images/note_split.png" alt="분할">
+      </label>
+      </div>
+
+      <button class="btn" type="submit">생성</button>
+    </form>
+</body>

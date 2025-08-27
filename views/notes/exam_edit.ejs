@@ -1,0 +1,24 @@
+<body>
+    <h2>모의고사 생성</h2>
+    <form id="editExamForm">
+      <label for="cardNum">문제 수</label>
+      <select class="inputBox" id="cardNum" name="cardNum" required>
+        <option value="10">10</option>
+        <option value="30">30</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+
+      <div class="note-list">
+      <label>수첩 선택</label><p class="pMsg">* 최대 3개의 수첩까지 선택이 가능합니다.</p>
+        <% notes.forEach(note => { %>
+            <label class="note-checkbox">
+                <input type="checkbox" name="notes" value="<%= note.note_id %>" class="hidden-checkbox">
+                <span class="box-label"><%= note.title && note.title.length > 30 ? note.title.substring(0, 30) + '...' : note.title %></span>
+            </label>
+        <% }) %>
+      </div>
+
+      <button class="btn" type="submit">시험보러 가기</button>
+    </form>
+</body>

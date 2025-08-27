@@ -1,0 +1,70 @@
+form {
+  max-width: 400px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.inputBox#title {
+  margin: 1.2rem 0;
+}
+
+/* 수첩 추가 등록 모달 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px 25px;
+  width: 300px;
+  border-radius: 8px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  padding: 0 0.75rem;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.content-box {
+  margin-top: 2.0rem;
+}
+
+input[type=file]::file-selector-button {
+  width: 100px;
+  height: 30px;
+  margin-right: 0.8rem;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, box-shadow 0.2s;
+  &:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.pMsg{
+    font-size: 12px;
+    color: #868686;
+    display: inline-block;
+    margin-left: 10px;
+}

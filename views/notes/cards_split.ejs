@@ -1,0 +1,48 @@
+
+<div class="sort-container">
+  <!-- 정렬 옵션 -->
+  <select id="sort-select" class="sort-select">
+    <option value="">등록순</option>
+    <option value="wrongCnt">하트순</option>
+  </select>
+</div>
+<div id="index-sticker-list" class="index-sticker-list"></div>
+<div class="note-container">
+  <ul class="note-list">
+    <li class="note-row" data-index="5">
+      <input type="hidden" value="1" id="wrongCnt_5">
+      <input type="hidden" value="1" id="txtBookmark_5">
+  <div class="left"> 
+  <span id="spanBookmark_5">  
+    <div class="index-sticker" id="index-sticker_5"></div>    
+  </span>
+    <div class="meta">
+      <span class="spanHeart" id="heart_5" onclick="setWrongCnt(5)">       
+        <img src="/images/heart.png" alt="틀림" class="img-heart">       
+        <img src="/images/heart-empty.png" alt="틀림" class="img-heart">     
+      </span>
+      <span class="hint-btn" data-hint=""></span>
+    </div>
+  1. 각 클래스 데이터 구조로부터 처리 기능을 분리하여 별도의 클래스를 만들어 놓고, 해당 클래스의 메서드가 각 클래스를 돌아다니며 특정 작업을 수행하도록 만드는 패턴으로 객체의 구조는 변경하지 않으면서 기능만 따로 추가하거나 확장할 때 사용하는 디자인 패턴은?</div>
+  <div class="right">
+    <div class="settings-icon">
+      <img id="dots-button_5" src="/images/dots.png" alt="설정">
+        <!-- 팝업 메뉴 -->
+        <div class="dots-menu" id="dots-menu_5">
+          <p onclick="editCard(5)">문제 편집</p>
+          <p onclick="delCard(5)">문제 삭제</p>
+          <p onclick="setBookmark(5)">북마크 적용</p>
+        </div>
+    </div>
+    <span>Visiter</span>
+    <div id="answer-actions_5" class="answer-actions">
+      <button class="edit-save-btn hidden">저장</button>
+      <button class="edit-cancel-btn hidden">취소</button>
+    </div>
+  </div>
+ </li>
+  </ul>
+</div>
+  <div id="hint-popup" class="hint-popup">
+    <div class="hint-content"></div>
+  </div>

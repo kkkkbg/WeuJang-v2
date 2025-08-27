@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아이디 찾기</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/find.css" />
+</head>
+<body>
+  <div class="find-box">
+    <h2>아이디 찾기</h2>
+    <form id="findForm">
+      <div class="input-box">
+        <label for="name">사용자 이름</label>
+        <input type="text" class="inputBox" id="name" name="name" required/>
+      </div>
+
+      <div class="input-box">
+        <label for="email">이메일 주소</label>
+        <div>
+          <input type="email" class="inputBox" id="email" name="email" placeholder="이메일 주소를 입력해주세요" required />
+          <button class="btn" type="button" id="sendEmail" onclick="sendAuthCode()">인증번호 발송</button>
+        </div>
+        <div id="emailCheckMsg"></div>
+        <input type="text" class="inputBox" id="authCode" name="authCode" oninput="checkAuthCodeMatch()" placeholder="인증번호를 입력해주세요">
+      </div>
+      
+      <button class="btn" type="submit">확인</button>
+    </form>
+
+    <div id="home" onclick="location.href='/'">홈화면</div>
+
+  </div>
+</body>
+
+<script src="/js/findId.js"></script>
+
+</html>

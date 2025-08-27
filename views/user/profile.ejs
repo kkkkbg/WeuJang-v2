@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아이디 찾기</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/profile.css" />
+</head>
+<body>
+<main class="profile-container">
+  <div class="profile-header">
+    <h2>프로필 설정</h2>
+    <img src="/images/setting.png" class="icon-set" alt="설정" title="프로필 설정 변경" onclick="disableReadonly()">
+  </div>
+
+  <form id="profileForm" class="profile-form" >
+    <table class="profile-table">
+      <tr>
+        <td><label for="user_id">회원 ID</label></td>
+        <td><input type="text" id="user_id" name="user_id" value="<%= userInfo.user_id %>" readonly /></td>
+      </tr>
+      <tr>
+        <td><label for="name">이름</label></td>
+        <td><input type="text" id="name" name="name" value="<%= userInfo.name %>" readonly required /></td>
+      </tr>
+      <tr>
+        <td><label for="email">이메일</label></td>
+        <td><input type="email" id="email" name="email" value="<%= userInfo.email %>" readonly required /></td>
+      </tr>
+      <tr>
+        <td><label for="birth">생년월일</label></td>
+        <td>
+          <%
+            const birth = userInfo.birth;
+            const birthFormatted = birth.substring(0,4) + '-' + birth.substring(4,6) + '-' + birth.substring(6,8);
+          %>
+          <input type="date" id="birth" name="birth" value="<%= birthFormatted %>" readonly required>
+        </td>
+      </tr>
+    </table>
+
+    <div class="form-meta" id="createDt">
+      <%
+        const dt = userInfo.creatDTM;
+        const dtFormatted = dt.substring(0,4) + '/' + dt.substring(4,6) + '/' + dt.substring(6,8) + ' ' + dt.substring(8,10) + ':' + dt.substring(10,12) + ':' + dt.substring(12,14);
+      %>
+      <p>* 가입일시: <%= dtFormatted %></p>
+    </div>
+
+    <button type="button" class="btn" id="save" onclick="saveUserInfo()">저장하기</button>
+  </form>
+    <div class="form-meta">
+      <button type="button" class="btn" id="password" onclick="goChangePw()">
+        비밀번호 변경
+      </button>  
+    </div>
+</main>
+
+<script src="/js/profile.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,86 @@
+.notice-detail-page {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.notice-box {
+  max-width: 80%;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.notice-badge {
+  display: inline-block;
+  background: #ff5b5b;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.notice-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.notice-meta {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.notice-divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 1rem 0;
+}
+
+.notice-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  white-space: pre-line;
+}
+
+.notice-back {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.notice-back a {
+  text-decoration: none;
+  color: #555;
+  font-weight: bold;
+}
+
+.notice-back {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background-color: var(--normal-yellow);
+  color: #333;
+  border: var(--border-17);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: var(--shadow-15);
+  border: var(--border-17);
+}

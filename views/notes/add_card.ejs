@@ -1,0 +1,49 @@
+<body>
+  <h2>문제 등록</h2>
+  <form id="addCardForm">
+    <div class="input-box">
+      <label>수첩 선택:</label>
+      <select class="inputBox" id="note_id" name="note_id" required>
+        <% notes.forEach(note => { %>
+          <option value="<%= note.note_id %>"><%= note.title %></option>
+        <% }) %>
+      </select><br/>
+    </div>
+    <button class="btn" type="button" id="addNoteBtn">수첩 추가</button>
+
+    <div class="input-box">
+      <label>문제:</label>
+      <textarea class="inputBox" name="question" required maxlength="500" rows="4" cols="50" style="resize: vertical;"></textarea><br/>
+    </div>
+
+    <div class="input-box">
+      <label>정답:</label>
+      <input class="inputBox" type="text" name="answer" required maxlength="500"><br/>
+    </div>
+
+    <div class="input-box">
+      <label>힌트:</label>
+      <input class="inputBox" type="text" name="hint" maxlength="300"><br/>
+    </div>
+
+    <button class="btn" type="submit">등록</button>
+  </form>
+
+  <!-- 팝업 (모달) -->
+  <div id="noteModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+       <form id="noteForm">
+        <input class="inputBox" id="title" name="title" type="text" placeholder="제목" required />
+          <label for="template">템플릿</label>
+          <select class="inputBox" id="template" name="template" required>
+            <option value="filp">플립</option>
+            <option value="text">텍스트 박스</option>
+            <option value="split">분할</option>
+          </select>
+          <button class="btn" type="submit">생성</button>
+      </form>
+    </div>
+  </div>
+
+</body>

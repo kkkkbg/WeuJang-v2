@@ -1,0 +1,253 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 화면 전체 높이 */
+  /* min-height: 100vh; */
+      max-height: 100vh;
+  /* 모바일에서 너무 꽉 차는 것 방지 */
+  padding: 2.3rem 2.3rem 0 0;
+  /* index-sticker-list가 절대 위치 잡을 기준 */
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* 카드 전체 감싸는 컨테이너 */
+.note-container {
+  position: relative;
+    display: flex;
+    flex-direction: column; /* 세로로 나열 */
+  width: 60%;
+  min-width: 350px;
+  max-width: 1200px;
+  height: calc(85dvh - 4rem); /* 동적 뷰포트 사용 */
+  max-height: calc(85dvh - 4rem);
+  /* 너무 길어지면 스크롤 허용 */
+      padding-top: 1rem;
+
+  /* 임의로 높이 고정 */
+  /* height: 700px; */
+  /* 상단바 높이만큼 마진 적용 */
+  /* margin-bottom: 71px; */
+}
+
+.no-data {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #767676;
+  margin: 5rem auto;
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+.no-data:hover {
+  color: #000000;
+}
+
+/* 카드 위 메타 정보 */
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+
+.spanHeart {
+  display: flex;
+  gap: 2px;
+  /* 이미지 사이 간격 */
+  align-items: center;
+  cursor: pointer;
+}
+
+.img-heart {
+  width: 25px;
+  height: 25px;
+}
+
+#hint-btn {
+  cursor: pointer;
+}
+
+/* 카드 본체 */
+.card {
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1); 
+  border: var(--border-10);
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 2.2;
+  background-color: var(--normal-yellow);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  cursor: pointer;
+  /* ✅ overflow 제거 또는 overflow: visible로 변경 */
+  overflow: visible;
+}
+
+/* 앞/뒷면 공통 */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 1.2rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.card-front {
+  text-indent: -0.8rem;
+  text-align: center;
+}
+
+#question {
+  padding: 0 0.8rem;
+  width: 100%;
+}
+
+.card-back {
+  background-color: var(--dark-yellow);
+  transform: rotateY(180deg);
+}
+
+/* 회전 */
+.card.rotate {
+  transform: rotateY(180deg);
+}
+
+/* 네비게이션 버튼 */
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  gap: 2rem;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--shadow-50);
+}
+
+.hidden {
+  display: none;
+}
+
+.wrong-btn {
+  margin-top: 0.8rem;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.wrong-btn:hover,
+.correct-btn:hover  {
+  background-color: var(--shadow-50);
+}
+
+.wrong-btn,
+.correct-btn {
+  margin: 0 4px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.wrong-btn {
+  background-color: var(--normal-red);
+  color: white;
+}
+
+.correct-btn {
+  background-color: var(--normal-green);
+  color: white;
+}
+
+.answer-actions {
+  float: right;
+  margin-top: 5px;
+}
+
+.card-progress {
+  width: 100%;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--normal-green);
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* 반응형 768px 이하 */
+ @media (max-width: 768px) {
+
+  .card {
+    font-size: 1rem;
+  }
+
+  .card-front, .card-back {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .navigation button {
+    font-size: 0.95rem;
+    padding: 8px 16px;
+  }
+} 
+
+/* 반응형 480px 이하 */
+ @media (max-width: 480px) {
+  .card {
+    aspect-ratio: 5 / 3;
+  }
+
+  .card-front, .card-back {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .navigation button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+} 

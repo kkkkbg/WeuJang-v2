@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>외우장</title>
+    <link rel="icon" href="/images/folder.jpg" type="image/png" />
+    <link rel="stylesheet" href="/css/common/header.css" />
+    <link rel="stylesheet" href="/css/common/nav.css" />
+    <link rel="stylesheet" href="/css/common/footer.css" />
+    <link rel="stylesheet" href="/css/cover/cover.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <% if (typeof cssFile !== 'undefined') { %>
+    <link rel="stylesheet" href="<%= cssFile %>" />
+    <% } %>
+  </head>
+
+  <body>
+    <%- include('common/header') %> 
+    <%- include('common/nav') %>
+
+    <div class="container" id="container">
+      <!-- 메인 콘텐츠 -->
+      <main class="main">
+        <%- body %>
+        <div class="cover" id="cover">
+          <img id="coverImage" src="">
+          <div id="coverText"></div>
+        </div>
+      </main>
+
+      <!-- 메인화면에서만 푸터 사용 -->
+      <% if (typeof page !== 'undefined' && page === 'main') { %>
+      <%- include('common/footer') %>
+      <% } else { } %>
+
+    </div>
+  </body>
+
+  <script defer src="/js/main.js"></script>
+  <script defer src="/js/cover/cover.js"></script>
+  <% if (typeof jsFile !== 'undefined') { %>
+  <script nonce="abc123" src="<%= jsFile %>"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <% } %>
+</html>
