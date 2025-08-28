@@ -1,4 +1,4 @@
-// netlify/functions/app.js
+// netlify/functions/server.js
 
 const express = require("express");
 const session = require("express-session");
@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 const serverless = require("serverless-http"); // serverless-http 모듈 추가
+const ejs = require("ejs");
 
 const app = express();
 
