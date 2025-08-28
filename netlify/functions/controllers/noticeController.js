@@ -1,6 +1,6 @@
 const { get } = require("mongoose");
 const { getNoticeInfo, getNoticeDetail,  } = require("../models/noticeMapper");
-const { getDate } = require('../utils/date');
+const { getDate } = require('../../../utils/date');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;

@@ -32,8 +32,7 @@ app.set("views", path.join(__dirname, "views"));
 // 미들웨어 설정
 app.use(cookieParser(process.env.COOKIE_SECRET));
 // 파일 경로 수정: public 폴더를 참조하도록 경로를 조정
-//app.use(express.static(path.join(__dirname, "../..", "public")));
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "../..", "public")));
 app.use('/uploads', express.static(path.join(__dirname, '..', '..', 'public/uploads')));
 app.use(
   session({
@@ -56,7 +55,7 @@ app.use((req, res, next) => {
 });
 
 // 라우터 등록 - 모든 경로는 라우터로 보내 처리
-const indexRouter = require("../../routes/index.js"); // 파일 경로 수정
+const indexRouter = require("./routes/index.js");// 파일 경로 수정
 app.use("/", indexRouter);
 
 // ** 중요: 이 부분을 제거합니다. **

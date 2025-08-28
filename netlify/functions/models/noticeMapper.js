@@ -1,4 +1,4 @@
-const connectDB = require("../dbconfig.js");
+const connectDB = require("../../../dbconfig.js");
 
 /**
  * 공지사항 목록 조회
