@@ -1,5 +1,5 @@
-[build]
-  command = "npm run build"  # 또는 "npm install"
+[build]  
+  command = "echo 'Build complete.'"
   publish = "public"
 
 [functions]
