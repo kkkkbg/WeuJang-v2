@@ -34,6 +34,7 @@
     "nodemailer": "^7.0.3",
     "path": "^0.12.7",
     "sanitize-html": "^2.16.0",
+    "serverless-http": "^3.2.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
