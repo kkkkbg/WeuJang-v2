@@ -25,7 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 // EJS 뷰 엔진 설정
 app.set("view engine", "ejs");
 // 파일 경로 수정: netlify/functions에서 views 폴더를 참조하도록 경로를 조정
-app.set("views", path.join(__dirname, "../..", "views"));
+//app.set("views", path.join(__dirname, "../..", "views"));
+app.set("views", path.resolve(__dirname, "../../views"));
 
 // 미들웨어 설정
 app.use(cookieParser(process.env.COOKIE_SECRET));
